@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Luxury Car Showroom</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: #111;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav ul li a:hover {
+            color: #ff9800;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            color: #fff;
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #ff9800;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #e68900;
+        }
+
+        /* Cars Section */
+        .cars {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .car-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .car-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .car-info {
+            padding: 20px;
+        }
+
+        .car-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .car-info p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ff9800;
+            margin-bottom: 10px;
+        }
+
+        .details-btn {
+            padding: 8px 18px;
+            background: #111;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+            margin-right: 5px;
+        }
+
+        .details-btn:hover {
+            background: #333;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: #eee;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: #fff;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #111;
+            color: #fff;
+            padding: 80px 0;
+        }
+
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .contact-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .contact-content p {
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .contact-content input,
+        .contact-content textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .contact-content button {
+            padding: 12px 25px;
+            background: #ff9800;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .contact-content button:hover {
+            background: #e68900;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #aaa;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container nav">
+            <div class="logo">AutoGallery</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#cars">Cars</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Find Your Dream Car</h1>
+            <p>Discover the best collection of luxury, sports, and electric vehicles with premium quality and unmatched
+                performance.</p>
+            <a href="#cars" class="btn">Explore Cars</a>
+        </div>
+    </section>
+
+    <section class="cars" id="cars">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Cars</h2>
+                <p>Choose from our wide range of vehicles</p>
+            </div>
+
+            <div class="car-grid">
+                <div class="car-card">
+                    <img src="https://images.cdn.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/bmw-m5-review-2025-002-front-tracking.jpg?itok=AEL4DtXd"
+                        alt="BMW M5">
+                    <div class="car-info">
+                        <h3>BMW M5</h3>
+                        <p>Luxury sedan with powerful performance and modern design.</p>
+                        <div class="price">$80,000</div>
+                        <a href="#" class="details-btn">More Details</a>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <img src="https://w0.peakpx.com/wallpaper/124/628/HD-wallpaper-preview-2023-mercedes-benz-amg-gt-4-door-coupe-adds-back-v-8s-new-hybrid-range-topper.jpg"
+                        alt="Mercedes gt 63">
+                    <div class="car-info">
+                        <h3>Mercedes-Benz gt 63</h3>
+                        <p>Elegant design combined with comfort and safety.</p>
+                        <div class="price">$65,000</div>
+                        <a href="#" class="details-btn">More Details</a>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <img src="https://preview.redd.it/audi-rs7-is-the-most-beautiful-car-in-my-heart-v0-ae6jvke2alkf1.jpeg?width=1080&crop=smart&auto=webp&s=fc178b9ebdef7d8fc9c3f189fd3750aaedbbdde1"
+                        alt="Audi R7">
+                    <div class="car-info">
+                        <h3>Audi rs7</h3>
+                        <p>High-performance sports car with stunning looks.</p>
+                        <div class="price">$150,000</div>
+                        <a href="#" class="details-btn">More Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>Premium services and customer satisfaction</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Wide Selection</h3>
+                    <p>Over 100+ cars including luxury, sports, and electric vehicles.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Certified Vehicles</h3>
+                    <p>All cars are fully inspected and certified for quality assurance.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Financing Options</h3>
+                    <p>Flexible financing options to suit every budget.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Customer Support</h3>
+                    <p>24/7 customer support to assist with all inquiries and bookings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <h2>Contact Us</h2>
+            <p>Visit our showroom or contact us for more information about our cars and offers.</p>
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <textarea rows="5" placeholder="Your Message"></textarea>
+            <button>Send Message</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>by Mohamed Ahmed Abdelhamed</p><br>
+        <p>© 2025 AutoGallery. All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>
